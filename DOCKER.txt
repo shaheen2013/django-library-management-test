@@ -1,0 +1,38 @@
+DOCKER QUICK START
+==================
+
+1. BUILD AND START:
+   docker-compose up --build
+
+2. VIEW LOGS:
+   docker-compose logs -f
+
+3. STOP:
+   docker-compose down
+
+4. CREATE SUPERUSER:
+   docker-compose exec web python manage.py createsuperuser
+
+5. RUN TESTS:
+   docker-compose exec web pytest
+
+6. ACCESS:
+   - API: http://localhost:8000
+   - Swagger: http://localhost:8000/swagger/
+   - Admin: http://localhost:8000/admin/
+
+DEV MODE (SQLite, no PostgreSQL):
+   docker-compose -f docker-compose.dev.yml up --build
+
+WINDOWS SHORTCUTS:
+   docker-start.bat
+
+LINUX/MAC SHORTCUTS:
+   ./docker-start.sh
+   make up
+   make logs
+   make test
+
+CLEANUP:
+   docker-compose down -v
+   docker system prune -f

@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=True
+      - SECRET_KEY=django-insecure-docker-dev-key
+      - USE_POSTGRES=False
+      - ALLOWED_HOSTS=localhost,127.0.0.1,web,*
+      - CORS_ALLOW_ALL_ORIGINS=True
+    stdin_open: true
+    tty: true
